@@ -1,0 +1,5 @@
+# 產生的文件包（tools/export-docs/export.sh）
+export/
+
+# Claude Code 個人設定（專案共用設定在 .claude/settings.json）
+.claude/settings.local.json
