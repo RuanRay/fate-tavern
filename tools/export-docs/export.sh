@@ -33,7 +33,8 @@ bundle 命運酒館_AI規範審查與限制.md "命運酒館｜AI 開發規範�
 bundle 命運酒館_開發階段需求.md "命運酒館｜開發階段需求 M0～M8（彙整版）" "由 \`docs/phases/\` 合併而成" \
   docs/phases/00_階段總覽.md docs/phases/M0_骨架與合約.md docs/phases/M1_權威地基.md docs/phases/M2_規則核心.md \
   docs/phases/M3_效果系統.md docs/phases/M4_卡牌內容.md docs/phases/M5_小遊戲.md docs/phases/M6_經濟系統.md \
-  docs/phases/M7_職業與勝負.md docs/phases/M8_房主工具與灰盒版.md docs/phases/工作清單_第一階段.md
+  docs/phases/M7_職業與勝負.md docs/phases/M8_房主工具與灰盒版.md docs/phases/工作清單_第一階段.md \
+  docs/phases/排程_第一階段.md
 bundle 命運酒館_開發檢查表與決策流程.md "命運酒館｜開發檢查表與美術 × 玩法決策流程（彙整版）" \
   "由 \`docs/checklists/\` 合併而成（改寫自使用者提供的獨立遊戲檢查表）" \
   docs/checklists/01_專案檢查表.md docs/checklists/02_Godot專用檢查表.md docs/checklists/03_美術與玩法決策流程.md
