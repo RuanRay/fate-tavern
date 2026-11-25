@@ -34,6 +34,20 @@ tools/
 4. **閘門**：M1（G1）、M3（G2）、M7（G3）、M8（G4）結束時，依 `00_階段總覽.md` 第 5 節簽核。
 5. **每週**：用 `docs/checklists/01_專案檢查表.md` 第 9 節的模板做工程檢查；美術與玩法有衝突時走 `03_美術與玩法決策流程.md`。
 
+## 本機啟動（M0-R03）
+
+需要 Node.js 26（`.nvmrc`）、pnpm（Corepack）、Docker Desktop（版本見 `docs/constraints/版本鎖定.md`）。
+
+```bash
+pnpm install
+docker compose -f infra/docker-compose.yml up -d --wait   # PostgreSQL 18.7，只開 127.0.0.1:5432
+cp .env.example .env.local                                # 本機設定；.env.local 不進 repo
+pnpm dev
+```
+
+- 資料存在 Docker volume `fate-tavern_pgdata`；`docker compose -f infra/docker-compose.yml down` 保留資料，加 `-v` 才會清空。
+- 資料庫帳密有本機預設值（見 compose 檔），要改就在 shell 設 `POSTGRES_USER`／`POSTGRES_PASSWORD`／`POSTGRES_DB`／`POSTGRES_PORT`，並同步改 `.env.local` 的 `DATABASE_URL`。
+
 ## 套件慣例（M0-R02）
 
 - 每個 TS 套件的 `tsconfig.json` 都 `extends` 根目錄的 `tsconfig.base.json`（strict 系列全開）；`typecheck` 指令寫 `tsc --noEmit -p .`。
