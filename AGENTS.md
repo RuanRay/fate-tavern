@@ -38,7 +38,8 @@
 ## 3. 架構邊界（違反即退件）
 
 ```
-Godot 主螢幕（GDScript）──┐
+Godot 主螢幕（GDScript）──┐   ← 第二階段起
+文字版主螢幕（React）─────┤   ← 第一階段的正式主螢幕 apps/host-web；之後當除錯與備援
 手機控制器（React）───────┼── WebSocket(JSON) ──▶ 伺服器（Node.js＋Fastify＋ws）──▶ 規則引擎（純 TS）
 管理後台（React）─────────┘                                │
                                                           └──▶ PostgreSQL（事件＋快照＋審計）
@@ -46,7 +47,7 @@ Godot 主螢幕（GDScript）──┐
 
 | 規則 | 說明 |
 |---|---|
-| B1 | **所有規則只在 `packages/rules-engine` 結算**。Godot、手機、後台不判定合法性、不計算結果 |
+| B1 | **所有規則只在 `packages/rules-engine` 結算**。Godot、文字版主螢幕、手機、後台不判定合法性、不計算結果（文字版主螢幕和 Godot 一樣是 `role: host`，只收公開投影） |
 | B2 | 客戶端只送 Command；收到 Event／Projection 才更新畫面 |
 | B3 | `rules-engine` 是純函式：不碰網路、資料庫、檔案、時鐘、`Math.random()`；時間與亂數由輸入帶入 |
 | B4 | 協定只在 `packages/protocol`（Zod）定義一次；JSON Schema、TS 型別、GDScript 類別一律由程式產生，**不准手寫第二份** |
