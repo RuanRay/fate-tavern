@@ -20,6 +20,7 @@ export default defineConfig(
       "no-restricted-globals": [
         "error",
         ...[
+          "globalThis",
           "crypto",
           "performance",
           "process",
@@ -36,7 +37,6 @@ export default defineConfig(
           message: "用 ctx.rng（技術規劃 §12-5）",
         },
         { object: "Date", property: "now", message: "用 ctx.now" },
-        { object: "globalThis", message: "規則引擎是純函式（AGENTS B3）" },
       ],
       "no-restricted-syntax": [
         "error",
@@ -48,6 +48,7 @@ export default defineConfig(
           selector: "CallExpression[callee.name='Date']",
           message: "用 ctx.now",
         },
+        { selector: "ImportExpression", message: "規則引擎不准動態匯入" },
       ],
       // 不准匯入任何 Node 內建模組（檔案、網路、時鐘、亂數）
       "no-restricted-imports": [
