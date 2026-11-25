@@ -297,7 +297,7 @@
   - 改名或合併：`gain_gold`＋`lose_gold` → `gold`；`change_clarity` → `clarity`；`gain_soul_fire` → `soul_fire`；`apply_status` → `status`；`steal_hand` → `move_hand`；`skip_action` → `jail`；`trigger_duel` → `duel`；`roll_check` → `roll`。
   - 保留但卡牌沒用到：`remove_status`（道具「草藥包」解除中毒會用到）。
   - 移除：`draw_card`、`swap_position`、`repeat`（MVP 用不到；非 MVP 的萊多會用到 `swap_position`，屆時再加）。
-- 本節只對照了**卡牌**；道具 34 種、魔術骰子 21 種、職業技能與祭壇升級、星座 4 個、聖物、死亡玩家道具，會在更新開發包時逐條對照並補齊元件。
+- 本節只對照了**卡牌**；道具 34 種、魔術骰子 21 種、職業技能與祭壇升級、星座 4 個、聖物、死亡玩家道具，會在更新開發包時逐條對照並補齊元件（✅ 已完成，見《效果元件對照表》v2.1 §5～§8）。
 - 卡牌的 scripted handler 從 2 個（月亮假數值、祭司版大牌）減到 0 個；全專案剩上表 2 個。
 
 ---
