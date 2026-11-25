@@ -1,0 +1,26 @@
+# 路徑負責人。GitHub Free 的私有 repo 不會強制執行，只當「誰負責、哪些路徑是 🔴」的說明（CI 與分支規則 §1-1）。
+# 🔴 路徑的實際檢查在 review-gate（.github/risk-paths.yml）：兩份 Gemini 審查＋你核准。
+# 2026-11-25：程式全部由 @RuanRay 負責（原 A、B 角色與 C 的框架部分）。
+# 小黃（Godot 場景、美術）有 GitHub 帳號後，把 /apps/godot-client/ 與 /AGENTS.md、/docs/design/ 加上他的帳號。
+
+# 🔴 高風險（後端／規則）
+/packages/rules-engine/        @RuanRay
+/packages/protocol/            @RuanRay
+/packages/database/            @RuanRay
+/tools/protocol-codegen/       @RuanRay
+/apps/server/src/persistence/  @RuanRay
+/apps/server/src/auth/         @RuanRay
+/apps/server/src/admin/        @RuanRay
+/content/                      @RuanRay
+
+# 網頁前端
+/apps/mobile-web/              @RuanRay
+/apps/host-web/                @RuanRay
+/apps/admin-web/               @RuanRay
+
+# Godot（框架：你；場景與美術：小黃）
+/apps/godot-client/            @RuanRay
+
+# 規範與設計文件
+/AGENTS.md                     @RuanRay
+/docs/design/                  @RuanRay
