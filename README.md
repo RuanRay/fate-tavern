@@ -39,6 +39,8 @@ tools/
 - 每個 TS 套件的 `tsconfig.json` 都 `extends` 根目錄的 `tsconfig.base.json`（strict 系列全開）；`typecheck` 指令寫 `tsc --noEmit -p .`。
 - 套件要用 Node 型別時，自己裝 `@types/node` 並在 `compilerOptions.types` 加 `"node"`。
 - **共用套件直接讀原始碼**：`package.json` 寫 `"exports": { ".": "./src/index.ts" }`，不需要先 build；TS、Vite、Node 26（type stripping）都能直接解析，`pnpm dev` 的平行啟動也不用管建置順序。因此原始碼不能用 `enum`、`namespace`（`erasableSyntaxOnly`）。
+- 相對匯入一律寫 `.ts` 副檔名（`import { x } from "./foo.ts"`）：Node 26 不會把 `./foo.js` 對應回 `.ts`（`allowImportingTsExtensions`）。
+- React 套件（`mobile-web`、`host-web`、`admin-web`）在自己的 `tsconfig.json` 補 `"jsx": "react-jsx"`，需要時把 `moduleResolution` 覆寫成 `bundler`。
 - `pnpm lint` 在根目錄一次跑 ESLint＋`prettier --check`；`pnpm format` 自動排版。`docs/`、`*.md` 不經 Prettier。
 
 ## 三個 AI 工具怎麼讀規範

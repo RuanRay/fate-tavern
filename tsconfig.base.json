@@ -16,6 +16,8 @@
     "isolatedModules": true,
     // Node 26 直接執行 .ts（type stripping）只接受可抹除的語法：不用 enum、namespace
     "erasableSyntaxOnly": true,
+    // 相對匯入寫 ./foo.ts：Node 26 不會把 .js 對應回 .ts；全部 noEmit，不需要改寫副檔名
+    "allowImportingTsExtensions": true,
     "skipLibCheck": true,
     "noEmit": true
   }
