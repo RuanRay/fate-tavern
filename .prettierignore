@@ -1,0 +1,5 @@
+# 設計文件與中文表格不由 Prettier 排版（AGENTS §4-7 禁止改 docs/design）
+docs/
+export/
+*.md
+pnpm-lock.yaml

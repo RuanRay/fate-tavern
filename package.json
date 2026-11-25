@@ -2,6 +2,7 @@
   "name": "fate-tavern",
   "private": true,
   "description": "命運酒館（Fate Tavern）monorepo；結構見 docs/design/命運酒館_技術規劃.md §10",
+  "type": "module",
   "packageManager": "pnpm@12.23.0",
   "engines": {
     "node": ">=26.13.1 <27"
@@ -10,8 +11,16 @@
     "dev": "pnpm -r --parallel --if-present run dev",
     "build": "pnpm -r --if-present run build",
     "typecheck": "pnpm -r --if-present run typecheck",
-    "lint": "pnpm -r --if-present run lint",
+    "lint": "eslint . && prettier --check .",
     "test": "pnpm -r --if-present run test",
-    "protocol:gen": "pnpm -r --if-present run protocol:gen"
+    "protocol:gen": "pnpm -r --if-present run protocol:gen",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.15.0",
+    "prettier": "3.10.1",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.74.0"
   }
 }
