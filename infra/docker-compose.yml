@@ -1,0 +1,33 @@
+# 本機開發用 PostgreSQL（M0-R03；技術規劃 §7-1 local 環境）
+# 啟動：docker compose -f infra/docker-compose.yml up -d
+# 預設值只給本機用；資料庫名稱帶環境名，伺服器啟動時會檢查（M0-R16）
+name: fate-tavern
+
+services:
+  postgres:
+    image: postgres:18.7 # 版本鎖定.md
+    user: postgres # 非 root
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-fate_tavern}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-fate_tavern_local_pw}
+      POSTGRES_DB: ${POSTGRES_DB:-fate_tavern_local}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432" # 只開本機，不對區網開放
+    volumes:
+      # PG18 映像的資料目錄是 /var/lib/postgresql/18/docker，要掛上一層
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      # 帶 -h 走 TCP：initdb 期間的暫時實例只聽 Unix socket，不能算就緒
+      test:
+        [
+          "CMD-SHELL",
+          'pg_isready -h 127.0.0.1 -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"',
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  pgdata:
