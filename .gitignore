@@ -1,3 +1,12 @@
+# 依賴與建置產物
+node_modules/
+dist/
+coverage/
+
+# 祕密（AGENTS §4-8）；範本 .env.example 要提交
+.env*
+!.env.example
+
 # 產生的文件包（tools/export-docs/export.sh）
 export/
 

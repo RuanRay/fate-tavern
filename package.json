@@ -1,0 +1,17 @@
+{
+  "name": "fate-tavern",
+  "private": true,
+  "description": "命運酒館（Fate Tavern）monorepo；結構見 docs/design/命運酒館_技術規劃.md §10",
+  "packageManager": "pnpm@12.23.0",
+  "engines": {
+    "node": ">=26.13.1 <27"
+  },
+  "scripts": {
+    "dev": "pnpm -r --parallel --if-present run dev",
+    "build": "pnpm -r --if-present run build",
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "lint": "pnpm -r --if-present run lint",
+    "test": "pnpm -r --if-present run test",
+    "protocol:gen": "pnpm -r --if-present run protocol:gen"
+  }
+}
