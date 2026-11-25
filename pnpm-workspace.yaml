@@ -1,0 +1,9 @@
+# 套件位置照技術規劃 §10；godot-client 不是 Node 套件，沒有 package.json，pnpm 會略過
+packages:
+  - apps/*
+  - packages/*
+  - tools/*
+
+# Node 版本不符 package.json engines 時拒絕安裝（版本鎖定）。
+# 實測 pnpm 12 會忽略 .npmrc 的 engine-strict（只警告），所以寫在這裡。
+engineStrict: true
