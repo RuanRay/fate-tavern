@@ -17,7 +17,12 @@ services:
       # PG18 映像的資料目錄是 /var/lib/postgresql/18/docker，要掛上一層
       - pgdata:/var/lib/postgresql
     healthcheck:
-      test: ["CMD-SHELL", 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      # 帶 -h 走 TCP：initdb 期間的暫時實例只聽 Unix socket，不能算就緒
+      test:
+        [
+          "CMD-SHELL",
+          'pg_isready -h 127.0.0.1 -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"',
+        ]
       interval: 5s
       timeout: 5s
       retries: 10
